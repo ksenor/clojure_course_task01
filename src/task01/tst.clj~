@@ -3,7 +3,7 @@
   (:gen-class))
 
 
-(defn get-links []
+(defn get-links [x]
 " 1) Find all elements containing {:class \"r\"}.
 
 Example:
@@ -20,8 +20,11 @@ The link from the example above is 'https://github.com/clojure/clojure'.
 
 Example: ['https://github.com/clojure/clojure', 'http://clojure.com/', . . .]
 "
-  (let [data (parse "clojure_google.html")]
-    nil))
+  (let [data (parse x)]
+    data))
 
 (defn -main []
   (println (str "Found " (count (get-links)) " links!")))
+
+(def data (get-links "clojure_google.html"))
+(println (into "" data))
